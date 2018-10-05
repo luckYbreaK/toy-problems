@@ -38,7 +38,9 @@ function thirt(n) {
     var nArr = [];
     var sum = 0;
 
-    // Iterate until the sequence is stationary
+    // Iterate until the sequence is stationary; due to the unknown # of iterations needed to determine
+    // that the sequence is stationary I chose to use a while loop, I likely could have used a recursive
+    // function instead
     while (n !== sum) {
         // Convert n into a string and split the string into an array of single digits
         nArr = Number(n).toString().split("");
@@ -49,9 +51,11 @@ function thirt(n) {
             if (j === intDivisions.length) {
                 j = 0;
             }
+            // In the expression below, JavaScript's type conversion evaluates the multiplication
+            // of nArr's string digits and intDivisions' integers to an integer value
             sum += nArr[i] * intDivisions[j];
         }
-        // Indicates the sequence is not stationary, loop again
+        // If the condition is true, the sequence is not stationary; loop again
         if (n !== sum) {
             n = sum;
             sum = 0;
